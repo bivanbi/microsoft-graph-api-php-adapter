@@ -2,10 +2,8 @@
 
 namespace KignOrg\GraphApiAdapter;
 
-use GuzzleHttp\Exception\GuzzleException;
-use Microsoft\Graph\Exception\GraphException;
-use Microsoft\Graph\Http\GraphCollectionRequest;
-use Microsoft\Graph\Model\User;
+use Exception;
+use Microsoft\Graph\Beta\Generated\Models\UserCollectionResponse;
 
 class UserAdapter
 {
@@ -20,18 +18,10 @@ class UserAdapter
     }
 
     /**
-     * @throws GraphException
-     * @throws GuzzleException
+     * @throws Exception
      */
-    public function getUsers(): GraphCollectionRequest {
-        // Only request specific properties
-        $select = '$select=displayName,id,mail';
-        // Sort by display name
-        $orderBy = '$orderBy=displayName';
-
-        $requestUrl = '/users?'.$select.'&'.$orderBy;
-        return $this->apiAdapter->createCollectionRequest('GET', $requestUrl)
-            ->setReturnType(User::class)
-            ->setPageSize(25);
+    public function getUsers(): UserCollectionResponse
+    {
+        return $this->apiAdapter->getGraphServiceClient()->users()->get()->wait();
     }
 }
