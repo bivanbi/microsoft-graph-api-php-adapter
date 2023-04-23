@@ -1,7 +1,7 @@
 {
   "name": "kign.org/microsoft-graph-api-adapter",
   "description": "PHP api client to Microsoft Graph API",
-  "minimum-stability": "stable",
+  "minimum-stability": "RC",
   "license": "gnu/gpl",
   "authors": [
     {
@@ -11,7 +11,8 @@
   ],
   "require": {
     "php": "^8.1",
-    "microsoft/microsoft-graph": "^1.94",
+    "microsoft/microsoft-graph-core": "^2.0.0-RC5",
+    "microsoft/microsoft-graph-beta": "^2.0@RC",
     "vlucas/phpdotenv": "^5.5",
     "ext-curl": "*"
   },
