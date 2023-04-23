@@ -1,8 +1,9 @@
 <?php
 
-namespace KignOrg\GraphApiAdapter;
+namespace KignOrg\GraphApiAdapter\SendMail;
 
 use Exception;
+use KignOrg\GraphApiAdapter\ApiAdapter;
 use Microsoft\Graph\Beta\Generated\Users\Item\SendMail\SendMailPostRequestBody;
 
 class SendMailAdapter
@@ -15,11 +16,6 @@ class SendMailAdapter
     public function __construct(ApiAdapter $apiAdapter)
     {
         $this->apiAdapter = $apiAdapter;
-    }
-
-    public function createSendMailPostRequestBody(): SendMailPostRequestBody
-    {
-        return new SendMailPostRequestBody();
     }
 
     /**
